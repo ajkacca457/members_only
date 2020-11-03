@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center my-2 text-danger py-2 font-weight-bold"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<div class="container bg-light w-75 text-center py-2 px-3">
+
+<h3 class="text-left">
   <%= @post.title %>
-</p>
+</h3>
 
-<p>
-  <strong>Body:</strong>
+<hr>
+
+<p class="text-left">
   <%= @post.body %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<hr>
+<%= link_to 'Edit', edit_post_path(@post),class:"bg-secondary text-white px-3 py-1 radius " %> |
+<%= link_to 'Back', posts_path, class:"bg-secondary text-white px-3 py-1 radius" %>
+
+</div>

@@ -1,27 +1,54 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="row justify-content-center form-cont overflow-hidden">
+  <div class="w-50 pb-5 overflow-hidden">
 
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <%= form_with(model: post, local: true) do |form| %>
+
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="card">
+        <div class="card-header p-0">
+            <div class="bg-info text-white text-center py-2">
+                <i class="fas fa-paper-plane fa-2x"></i>
+            </div>
+        </div>
+        <div class="card-body overflow-hidden p-3">
+
+            <!--Body-->
+            <div class="form-group overflow-hidden">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-heading text-info"></i></i></div>
+                    </div>
+                        <%= form.text_field :title, class:"form-control",id:"title",placeholder:"Title"%>
+                </div>
+            </div>
+
+            <div class="form-group overflow-hidden">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-keyboard text-info"></i></i></div>
+                    </div>
+                      <%= form.text_area :body,class:"form-control",placeholder:"Write your post here", rows:"5" %>
+                </div>
+            </div>
+
+            <div class="text-center overflow-hidden">
+                <%= form.submit "Submit",class:"btn btn-info btn-block rounded-0 py-2" %>
+            </div>
+        </div>
+
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

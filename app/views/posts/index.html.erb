@@ -1,29 +1,47 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"class="text-center my-2 text-danger py-2 font-weight-bold"><%= notice %></p>
 
-<h1>Posts</h1>
+<div class="container w-75 position-relative">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="titlecont bg-info d-flex px-2 py-2">
+<% if user_signed_in? %>
+<h3 class="text-white py-2">All existing posts by members</h3>
+<% else %>
+<h3 class="text-white py-2">All posts</h3>
+<% end %>
+<%= link_to '+ New Post', new_post_path,class:"btn-danger px-3 py-2 ml-auto align-self-center new" %>
+</div>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @posts.each do |post| %>
+<div class="card text-left mt-2">
+  <div class="card-header bg-secondary text-white">
+  <% if user_signed_in? %>
+  <h5><%= post.user.username %></h5>
+  <p>Created at: <%= post.user.created_at %></p>
+  <% else %>
+  <h5>Annoynymous</h5>
+  <% end %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= post.title %></h5>
+    <% if user_signed_in? %>
+    <hr>
+    <p class="card-text"><%= post.body %></p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="card-footer text-muted">
+    <% if user_signed_in? %>
+    <%= link_to 'Show', post, class:"mr-3 bg-secondary text-white px-2 py-1 radius" %>
+    <% if current_user == post.user %>
+    <%= link_to 'Edit', edit_post_path(post), class:"mr-3 bg-secondary text-white px-2 py-1 radius" %>
+    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?'},class:"bg-secondary text-white px-2 py-1 radius"  %>
+    <% end %>
+    <% else %>
+    <%= link_to "Sign up to see posts with users", new_user_registration_path, class:"mr-3 bg-success text-white px-2 py-1 radius"  %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
+</div>
