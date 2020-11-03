@@ -15,7 +15,7 @@
 <div class="card text-left mt-2">
   <div class="card-header bg-secondary text-white">
   <% if user_signed_in? %>
-  <h5><%= post.user.username %></h5>
+  <h5><%= post.user.name %></h5>
   <p>Created at: <%= post.user.created_at %></p>
   <% else %>
   <h5>Annoynymous</h5>
