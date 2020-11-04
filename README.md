@@ -14,7 +14,7 @@ In this project we developed a simple app with authentication:
 - The back end is set up with a User and Post model that validates presence of username, email and password, using devise gem and validates the presence of Post's description.
 - I used devise to perform user's authentication, creating the corresponding actions such as Log in, Log out,Sign up.
 - If user check the page without being authenticated, he/she will not be able to see the post's authors and the timestamps from the posts, but it displays when user Log in or Sign up
-- Any user who signed up can create,edit or destroy their own posts.
+- Any user who signed up can create own posts.
 - Pagination is used for visual appeal.
 
 ## Built With
