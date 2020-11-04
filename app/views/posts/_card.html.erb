@@ -1,0 +1,25 @@
+<% @posts.each do |post| %>
+<div class="card text-left mt-2">
+  <div class="card-header bg-secondary text-white">
+  <% if user_signed_in? %>
+  <h5><%= post.user.name %></h5>
+  <% else %>
+  <h5>Annoynymous</h5>
+  <% end %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= post.title %></h5>
+    <% if user_signed_in? %>
+    <hr>
+    <p class="card-text"><%= post.body %></p>
+    <% end %>
+  </div>
+  <div class="card-footer text-muted">
+    <% if user_signed_in? %>
+    <p>Created at: <%= post.user.created_at %></p>
+    <% else %>
+    <%= link_to "Sign up or Log In to see all the secrets", new_user_registration_path, class:"mr-3 bg-success text-white px-2 py-1 radius"  %>
+    <% end %>
+  </div>
+</div>
+<% end %>
