@@ -1,0 +1,21 @@
+<p id="notice"class="text-center my-2 text-danger py-2 font-weight-bold"><%= notice %></p>
+
+<div class="container w-75 position-relative">
+
+<div class="titlecont bg-info d-flex px-2 py-2">
+<% if user_signed_in? %>
+<h3 class="text-white py-2">All the secrets of members</h3>
+<% else %>
+<h3 class="text-white py-2">Log In or Sign Up to see all the secrets in details</h3>
+<% end %>
+<%= link_to '+ New Post', new_post_path,class:"btn-danger px-3 py-2 ml-auto align-self-center new" %>
+</div>
+
+<%= render 'card', post: @post %>
+
+<div align="center" class= "apple_pagination">
+  <%= will_paginate @posts %>
+</div>
+
+<br>
+</div>
